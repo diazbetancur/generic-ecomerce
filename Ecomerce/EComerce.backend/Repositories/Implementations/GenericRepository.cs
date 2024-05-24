@@ -15,7 +15,7 @@ namespace ECommerce.backend.Repositories.Implementations
             _dataContext = dataContext;
             _dbSet = _dataContext.Set<T>();
         }
-        public async Task<ActionResponse<T>> AddAsync(T entity)
+        public virtual async Task<ActionResponse<T>> AddAsync(T entity)
         {
             _dataContext.Add(entity);
             try
@@ -37,7 +37,7 @@ namespace ECommerce.backend.Repositories.Implementations
             }
         }
 
-        public async Task<ActionResponse<T>> DeleteAsync(int Id)
+        public virtual async Task<ActionResponse<T>> DeleteAsync(int Id)
         {
             var row = await _dbSet.FindAsync(Id);
             if (row == null)
@@ -67,7 +67,7 @@ namespace ECommerce.backend.Repositories.Implementations
             }
         }
 
-        public async Task<ActionResponse<IEnumerable<T>>> GetAllAsync()
+        public virtual async Task<ActionResponse<IEnumerable<T>>> GetAllAsync()
         {
             return new ActionResponse<IEnumerable<T>>
             {
@@ -76,7 +76,7 @@ namespace ECommerce.backend.Repositories.Implementations
             };
         }
 
-        public async Task<ActionResponse<T>> GetAsync(int Id)
+        public virtual async Task<ActionResponse<T>> GetAsync(int Id)
         {
             var row = await _dbSet.FindAsync(Id);
             if (row == null)
@@ -95,7 +95,7 @@ namespace ECommerce.backend.Repositories.Implementations
             };
         }
 
-        public async Task<ActionResponse<T>> UpdateAsync(T entity)
+        public virtual async Task<ActionResponse<T>> UpdateAsync(T entity)
         {
             _dataContext.Update(entity);
             try

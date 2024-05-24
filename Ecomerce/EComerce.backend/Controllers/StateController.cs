@@ -4,20 +4,21 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ECommerce.backend.Controllers
 {
-    [ApiController]
     [Route("api/[controller]")]
-    public class CountriesController : GenericController<Country>
+    [ApiController]
+    public class StateController : GenericController<State>
     {
-        private readonly ICountyUnitOfWork _countyUnitOfWork;
-        public CountriesController( IGenericUnitOfWork<Country> unitOfWork, ICountyUnitOfWork countyUnitOfWork) : base(unitOfWork)
+        private readonly IStatesUnitOfWork _statesUnitOfWork;
+
+        public StateController(IGenericUnitOfWork<State> unitOfWork, IStatesUnitOfWork statesUnitOfWork) : base(unitOfWork)
         {
-            _countyUnitOfWork = countyUnitOfWork;
+            _statesUnitOfWork = statesUnitOfWork;
         }
 
         [HttpGet("{id}")]
         public override async Task<IActionResult> GetAsync(int id)
         {
-            var action = await _countyUnitOfWork.GetAsync(id);
+            var action = await _statesUnitOfWork.GetAsync(id);
             if (action.Success)
             {
                 return Ok(action.Result);
@@ -28,7 +29,7 @@ namespace ECommerce.backend.Controllers
         [HttpGet]
         public override async Task<IActionResult> GetAllAsync()
         {
-            var action = await _countyUnitOfWork.GetAllAsync();
+            var action = await _statesUnitOfWork.GetAllAsync();
             if (action.Success)
             {
                 return Ok(action.Result);
