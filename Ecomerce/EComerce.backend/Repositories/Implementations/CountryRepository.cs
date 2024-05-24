@@ -1,6 +1,8 @@
 ﻿using EComerce.backend.Data;
+using ECommerce.backend.Dto;
 using ECommerce.backend.Entities;
 using ECommerce.backend.Repositories.Interfaces;
+using ECommerce.backend.Utils.Helpers;
 using ECommerce.backend.Utils.Responses;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,7 +19,7 @@ namespace ECommerce.backend.Repositories.Implementations
         public override async Task<ActionResponse<IEnumerable<Country>>> GetAllAsync()
         {
             var countries = await _db.Countries
-                .Include(c => c.States)
+                .OrderBy(c => c.Name)
                 .ToListAsync();
 
             return new ActionResponse<IEnumerable<Country>>()
@@ -46,6 +48,22 @@ namespace ECommerce.backend.Repositories.Implementations
             {
                 Success = true,
                 Result = country
+            };
+        }
+
+        public override async Task<ActionResponse<IEnumerable<Country>>> GetAllAsync(PaginationDTO pagination)
+        {
+            var queryable = _db.Countries
+                .Include(c => c.States)
+                .AsQueryable();
+
+            return new ActionResponse<IEnumerable<Country>>
+            {
+                Success = true,
+                Result = await queryable
+                .OrderBy( x => x.Name)
+                .Paginate(pagination)
+                .ToListAsync()
             };
         }
     }

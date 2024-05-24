@@ -1,4 +1,5 @@
-﻿using ECommerce.backend.Repositories.Interfaces;
+﻿using ECommerce.backend.Dto;
+using ECommerce.backend.Repositories.Interfaces;
 using ECommerce.backend.UnitOfWork.Interfaces;
 using ECommerce.backend.Utils.Responses;
 
@@ -18,7 +19,11 @@ namespace ECommerce.backend.UnitOfWork.Implementations
 
         public virtual async Task<ActionResponse<IEnumerable<T>>> GetAllAsync() => await _repository.GetAllAsync();
 
+        public virtual async Task<ActionResponse<IEnumerable<T>>> GetAllAsync(PaginationDTO pagination) => await _repository.GetAllAsync(pagination);
+
         public virtual async Task<ActionResponse<T>> GetAsync(int Id) => await _repository.GetAsync(Id);
+
+        public virtual async Task<ActionResponse<int>> GetTotalPages(PaginationDTO pagination) => await _repository.GetTotalPages(pagination);
 
         public async Task<ActionResponse<T>> UpdateAsync(T entity) => await _repository.UpdateAsync(entity);
     }

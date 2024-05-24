@@ -1,4 +1,5 @@
 ﻿using EComerce.backend.Data;
+using ECommerce.backend.Dto;
 using ECommerce.backend.Entities;
 using ECommerce.backend.Repositories.Implementations;
 using ECommerce.backend.Repositories.Interfaces;
@@ -20,5 +21,7 @@ namespace ECommerce.backend.UnitOfWork.Implementations
         public override async Task<ActionResponse<IEnumerable<State>>> GetAllAsync() => await _statesRepository.GetAllAsync();
 
         public override async Task<ActionResponse<State>> GetAsync(int Id) => await _statesRepository.GetAsync(Id);
+        public override async Task<ActionResponse<IEnumerable<State>>> GetAllAsync(PaginationDTO pagination) => await _statesRepository.GetAllAsync(pagination);
+        public override async Task<ActionResponse<int>> GetTotalPages(PaginationDTO pagination) => await _statesRepository.GetTotalPages(pagination); 
     }
 }

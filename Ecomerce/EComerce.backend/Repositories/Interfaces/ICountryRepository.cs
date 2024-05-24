@@ -1,4 +1,5 @@
-﻿using ECommerce.backend.Entities;
+﻿using ECommerce.backend.Dto;
+using ECommerce.backend.Entities;
 using ECommerce.backend.Utils.Responses;
 
 namespace ECommerce.backend.Repositories.Interfaces
@@ -7,5 +8,6 @@ namespace ECommerce.backend.Repositories.Interfaces
     {
         Task<ActionResponse<Country>> GetAsync(int Id);
         Task<ActionResponse<IEnumerable<Country>>> GetAllAsync();
+        Task<ActionResponse<IEnumerable<Country>>> GetAllAsync(PaginationDTO pagination);
     }
 }

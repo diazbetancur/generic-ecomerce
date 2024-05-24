@@ -1,4 +1,5 @@
-﻿using ECommerce.backend.Utils.Responses;
+﻿using ECommerce.backend.Dto;
+using ECommerce.backend.Utils.Responses;
 
 namespace ECommerce.backend.Repositories.Interfaces
 {
@@ -9,5 +10,7 @@ namespace ECommerce.backend.Repositories.Interfaces
         Task<ActionResponse<T>> DeleteAsync(int Id);
         Task<ActionResponse<T>> GetAsync(int Id);
         Task<ActionResponse<IEnumerable<T>>> GetAllAsync(); 
+        Task<ActionResponse<IEnumerable<T>>> GetAllAsync( PaginationDTO pagination);
+        Task<ActionResponse<int>> GetTotalPages( PaginationDTO pagination);
     }
 }

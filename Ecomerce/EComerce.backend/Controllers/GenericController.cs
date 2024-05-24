@@ -1,4 +1,5 @@
-﻿using ECommerce.backend.UnitOfWork.Interfaces;
+﻿using ECommerce.backend.Dto;
+using ECommerce.backend.UnitOfWork.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ECommerce.backend.Controllers
@@ -24,10 +25,32 @@ namespace ECommerce.backend.Controllers
             return BadRequest();
         }
 
-        [HttpGet]
+        [HttpGet("full")]
         public virtual async Task<IActionResult> GetAllAsync()
         {
             var action = await _unitOfWork.GetAllAsync();
+            if (action.Success)
+            {
+                return Ok(action.Result);
+            }
+            return BadRequest();
+        }
+
+        [HttpGet("totalPages")]
+        public virtual async Task<IActionResult> GetTotalPagesAsync([FromQuery] PaginationDTO pagination)
+        {
+            var action = await _unitOfWork.GetTotalPages(pagination);
+            if (action.Success)
+            {
+                return Ok(action.Result);
+            }
+            return BadRequest();
+        }
+
+        [HttpGet]
+        public virtual async Task<IActionResult> GetAllAsync([FromQuery] PaginationDTO pagination)
+        {
+            var action = await _unitOfWork.GetAllAsync(pagination);
             if (action.Success)
             {
                 return Ok(action.Result);

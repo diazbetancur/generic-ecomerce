@@ -1,5 +1,7 @@
 ﻿using EComerce.backend.Data;
+using ECommerce.backend.Dto;
 using ECommerce.backend.Repositories.Interfaces;
+using ECommerce.backend.Utils.Helpers;
 using ECommerce.backend.Utils.Responses;
 using Microsoft.EntityFrameworkCore;
 
@@ -130,6 +132,29 @@ namespace ECommerce.backend.Repositories.Implementations
             {  
                 Success = false,
                 Message = "Ya existe el registro que esta intentando crear"
+            };
+        }
+
+        public virtual async Task<ActionResponse<IEnumerable<T>>> GetAllAsync(PaginationDTO pagination)
+        {
+            var queryable = _dbSet.AsQueryable();
+            return new ActionResponse<IEnumerable<T>>
+            {
+                Success = true,
+                Result = await queryable.Paginate(pagination).ToListAsync()
+            };
+        }
+
+        public virtual async Task<ActionResponse<int>> GetTotalPages(PaginationDTO pagination)
+        {
+            var queryable = _dbSet.AsQueryable();
+            double count = await queryable.CountAsync();
+            int totalPages = (int)Math.Ceiling( count / pagination.RecordsNumber);
+
+            return new ActionResponse<int>
+            {
+                Success = true,
+                Result = totalPages
             };
         }
     }

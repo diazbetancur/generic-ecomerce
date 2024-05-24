@@ -20,6 +20,8 @@ namespace ECommerce.backend.Handlers
             services.AddScoped<ICountyUnitOfWork, CountryUnitOfWork>();
             services.AddScoped<IStatesRepository, StateRepository>();
             services.AddScoped<IStatesUnitOfWork, StateUnitOfWork>();
+            services.AddScoped<ICityRepository, CityRepository>();
+            services.AddScoped<ICityUnitOfWork, CityUnitOfWork>();
         }
     }
 }
