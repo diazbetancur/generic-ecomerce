@@ -3,11 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34316.72
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EComerce.backend", "EComerce.backend\EComerce.backend.csproj", "{F3D2F0C7-80ED-4904-AB4E-F6030433BE3A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerce.backend", "EComerce.backend\ECommerce.backend.csproj", "{F3D2F0C7-80ED-4904-AB4E-F6030433BE3A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EComerce.shared", "EComerce.shared\EComerce.shared.csproj", "{7327C382-36F7-440A-9D62-7F2234BF061A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EComerce.test", "EComerce.test\EComerce.test.csproj", "{0C9DDB3A-DA53-4DE6-BF33-0C348A95582F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerce.test", "EComerce.test\ECommerce.test.csproj", "{0C9DDB3A-DA53-4DE6-BF33-0C348A95582F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,10 +17,6 @@ Global
 		{F3D2F0C7-80ED-4904-AB4E-F6030433BE3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3D2F0C7-80ED-4904-AB4E-F6030433BE3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3D2F0C7-80ED-4904-AB4E-F6030433BE3A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7327C382-36F7-440A-9D62-7F2234BF061A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7327C382-36F7-440A-9D62-7F2234BF061A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7327C382-36F7-440A-9D62-7F2234BF061A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7327C382-36F7-440A-9D62-7F2234BF061A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0C9DDB3A-DA53-4DE6-BF33-0C348A95582F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0C9DDB3A-DA53-4DE6-BF33-0C348A95582F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C9DDB3A-DA53-4DE6-BF33-0C348A95582F}.Release|Any CPU.ActiveCfg = Release|Any CPU
